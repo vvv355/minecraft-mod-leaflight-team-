@@ -1,7 +1,9 @@
 package ru.college.leaflight;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.util.Identifier; // Правильный импорт для Fabric (Yarn)
+import net.fabricmc.fabric.api.event.player.UseBlockCallback; // Импорт для события
+import net.minecraft.text.Text; // Импорт для текста
+import net.minecraft.util.ActionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,14 +13,17 @@ public class LuminousLeaves implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
-
-		// Инициализация наших блоков
+		LOGGER.info("Проект загружен успешно");
 		ModBlocks.initialize();
-	}
 
-	// Полезный метод для создания ID (например, "luminous-leaves:luminous_leaves")
-	public static Identifier id(String path) {
-		return Identifier.of(MOD_ID, path);
+		// Реализация дополнительного поведения
+		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+			// Проверяем, что действие происходит на сервере (не на клиенте) и кликнули именно по нашему блоку
+			if (!world.isClient() && world.getBlockState(hitResult.getBlockPos()).isOf(ModBlocks.LUMINOUS_LEAVES)) {
+				player.sendMessage(Text.literal("§eЛиства мягко светится..."), false); // Вывод сообщения
+				return ActionResult.SUCCESS; // Указываем, что действие выполнено
+			}
+			return ActionResult.PASS; // Для всех остальных блоков ничего не делаем
+		});
 	}
 }
