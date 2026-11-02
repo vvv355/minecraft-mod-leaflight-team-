@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "luminous-leaves",
+	"version": "${version}",
+	"name": "Luminous Leaves",
+	"description": "Добавляет декоративный светящийся блок листвы",
+	"authors": [
+		"LeafLight Team"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/luminous-leaves/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"ru.college.leaflight.LuminousLeaves"
+		],
+		"client": [
+			"ru.college.leaflight.LuminousLeavesClient"
+		]
+	},
+	"mixins": [],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
