@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "LLL",
+    "LSL",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:oak_leaves"
+    },
+    "S": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "id": "luminous-leaves:luminous_leaves",
+    "count": 1
+  }
+}
