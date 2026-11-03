@@ -13,7 +13,6 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    // Регистрируем блок с ID: luminousleaves:luminous_leaves
     public static final Block LUMINOUS_LEAVES = registerBlock("luminous_leaves",
             new Block(AbstractBlock.Settings.create()
                     .strength(3.0f, 6.0f) // Прочность и сопротивление (как у камня)
@@ -23,9 +22,7 @@ public class ModBlocks {
             ));
 
     private static Block registerBlock(String name, Block block) {
-        // Регистрируем предметную форму блока (BlockItem)
         registerBlockItem(name, block);
-        // Регистрируем сам блок в игре
         return Registry.register(Registries.BLOCK,
                 Identifier.of(LuminousLeaves.MOD_ID, name), block);
     }
@@ -37,7 +34,6 @@ public class ModBlocks {
     }
 
     public static void initialize() {
-        // Добавляем блок в творческую вкладку "Строительные блоки"
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(LUMINOUS_LEAVES);
         });
